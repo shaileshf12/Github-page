@@ -108,13 +108,19 @@ function Header() {
                 fontSize="large"
               />
 
-              <Toolbar style={{ color: "white", gap: "2rem" }}></Toolbar>
+              <Toolbar style={{ color: "white", gap: "2rem" }}>
+                <div>Product</div>
+                <div>Solutions</div>
+                <div>Open Source</div>
+                <div>Pricing</div>
+              </Toolbar>
 
               <Typography
                 variant="h6"
                 component="div"
                 sx={{ flexGrow: 1 }}
-              ></Typography>
+              >
+              </Typography>
 
               <Toolbar style={{ gap: "1.5rem" }}>
                 <input style={searchStyle} placeholder="Search GitHub"></input>
