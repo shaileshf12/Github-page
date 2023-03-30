@@ -12,26 +12,44 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import CloseIcon from "@mui/icons-material/Close";
 import Fade from "@mui/material/Fade";
+import "./style.css";
+import Backdrop from "@mui/material/Backdrop";
+import { Modal } from "@mui/material";
 
 function Header() {
   const matches = useMediaQuery("(max-width:1000px)");
   const searchStyle = {
     color: "white",
     padding: ".6rem",
-    borderRadius: ".3rem",
     backgroundColor: "#2b3249",
     border: "none",
-    border: ".01px solid #F5F5F5",
     width: "12rem",
+    marginLeft:".2rem"
   };
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const open = Boolean(anchorEl);
+  // const handleClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const style = {
+    position: "absolute",
+    top: "28%",
+    left: "75%",
+    transform: "translate(-50%, -50%)",
+    width: 200,
+    bgcolor: "background.paper",
+    border: ".5px solid #000",
+    boxShadow: 24,
+    p: 4,
   };
 
   return (
@@ -72,10 +90,103 @@ function Header() {
                   aria-controls={open ? "fade-menu" : undefined}
                   aria-haspopup="true"
                   aria-expanded={open ? "true" : undefined}
-                  onClick={handleClick}
+                  onClick={handleOpen}
                 />
 
-                <Menu
+                <Modal
+                  aria-labelledby="transition-modal-title"
+                  aria-describedby="transition-modal-description"
+                  open={open}
+                  onClose={handleClose}
+                  closeAfterTransition
+                  slots={{ backdrop: Backdrop }}
+                  slotProps={{
+                    backdrop: {
+                      timeout: 500,
+                    },
+                  }}
+                >
+                  <Fade in={open}>
+                    <Box sx={style}>
+                      <div
+                        style={{ display: "flex", justifyContent: "flex-end" }}
+                      >
+                        <CloseIcon
+                          onClick={handleClose}
+                          style={{ cursor: "pointer" }}
+                        />
+                      </div>
+                      {/* <Typography
+                        id="transition-modal-title"
+                        variant="h6"
+                        component="h2"
+                      >
+                        Text in a modal
+                      </Typography> */}
+                      <Typography
+                        id="transition-modal-description"
+                        sx={{ mt: 2 }}
+                      >
+                        Product
+                      </Typography>
+                      <Typography
+                        id="transition-modal-description"
+                        sx={{ mt: 2 }}
+                      >
+                        Solutions
+                      </Typography>
+                      <Typography
+                        id="transition-modal-description"
+                        sx={{ mt: 2 }}
+                      >
+                        Open Source
+                      </Typography>
+                      <Typography
+                        id="transition-modal-description"
+                        sx={{ mt: 2 }}
+                      >
+                        Pricing
+                      </Typography>
+                      <Typography
+                        id="transition-modal-description"
+                        sx={{ mt: 2 }}
+                      ></Typography>
+
+                      <input
+                        className="search"
+                        style={{
+                          backgroundColor: "white",
+                          color: "white",
+                          borderRadius: ".3rem",
+                          border: "none",
+                          border: "1px solid black",
+                          width: "12rem",
+                          marginBottom: ".5rem",
+                          height: "1.8rem",
+                        }}
+                        placeholder="Search GitHub"
+                        type="search"
+                      ></input>
+
+                      <Typography
+                        textAlign="center"
+                        style={{
+                          backgroundColor: "grey",
+                          color: "white",
+                          borderRadius: ".3rem",
+                          border: "none",
+                          border: ".01px solid #F5F5F5",
+                          width: "12rem",
+                          height: "1.8rem",
+                        }}
+                      >
+                        Sign in
+                      </Typography>
+                    </Box>
+                  </Fade>
+                </Modal>
+
+                {/* <Menu
                   id="fade-menu"
                   MenuListProps={{
                     "aria-labelledby": "fade-button",
@@ -90,7 +201,7 @@ function Header() {
                   <MenuItem>Solutions</MenuItem>
                   <MenuItem>Open Source</MenuItem>
                   <MenuItem>Pricing</MenuItem>
-                </Menu>
+                </Menu> */}
               </IconButton>
             </Toolbar>
           </AppBar>
@@ -119,11 +230,42 @@ function Header() {
                 variant="h6"
                 component="div"
                 sx={{ flexGrow: 1 }}
-              >
-              </Typography>
+              ></Typography>
 
               <Toolbar style={{ gap: "1.5rem" }}>
-                <input style={searchStyle} placeholder="Search GitHub"></input>
+                <div
+                  style={{
+                    width: "15rem",
+                    border: "1px solid rgb(160, 157, 157)",
+                    display: "flex",
+                    backgroundColor: "#2b3249",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    borderRadius: ".3rem",
+                    height : '2.4rem',
+                    fontSize: "small"
+                  }}
+                >
+                  <input
+                    className="search"
+                    style={searchStyle}
+                    placeholder="Search GitHub"
+                    type="search"
+                    
+                  ></input>
+                  <div
+                    style={{
+                      border: "1px solid rgb(160, 157, 157)",
+                      color: "white",
+                      height: "1rem",
+                      padding: ".1rem .4rem .1rem .4rem",
+                      marginRight: '.4rem',
+                      borderRadius: ".2rem"
+                    }}
+                  >
+                    /
+                  </div>
+                </div>
 
                 <Typography textAlign="center" style={{ color: "white" }}>
                   Sign in

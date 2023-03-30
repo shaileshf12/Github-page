@@ -12,7 +12,7 @@ function Productivity() {
   return (
     <>
       <Box
-        m={10}
+        m={5}
         data-aos="fade-right"
         sx={{
           display: "flex",

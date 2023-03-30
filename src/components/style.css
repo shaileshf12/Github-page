@@ -1,0 +1,32 @@
+
+div{
+    /* color: rgb(160, 157, 157); */
+}
+
+.intro .icon2{
+    display: none;
+}
+
+.intro:hover .icon2{
+    display: block;
+}
+
+.intro:hover .icon1{
+    display: none;
+}
+
+.start-trial .icon4{
+    display: none;
+}
+
+.start-trial:hover .icon4{
+    display: block;
+}
+
+.start-trial:hover .icon3{
+    display: none;
+}
+
+.start-trial:hover{
+    border: 1px solid white;
+}
