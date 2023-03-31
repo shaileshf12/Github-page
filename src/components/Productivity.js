@@ -14,6 +14,7 @@ function Productivity() {
       <Box
         m={5}
         data-aos="fade-right"
+        // data-aos-delay="800"
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -22,9 +23,16 @@ function Productivity() {
         }}
       >
         <h2 style={{ color: "white" }}>Productivity</h2>
-        <div style={{ fontSize: "3rem", color: "#7ee787", textAlign: "left" }}>
+        <div
+          style={{
+            fontSize: "3rem",
+            color: "#7ee787",
+            textAlign: "left",
+            maxWidth: "60rem",
+          }}
+        >
           <span style={{ color: "#7ee787" }}>
-            Accelerate high-quality software development.
+            Accelerate high-quality software development.{" "}
           </span>
           <span style={{ color: "white" }}>
             Our platform drives innovation with tools that boost developer

@@ -19,10 +19,11 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useState } from "react";
 import "./style.css";
+import TextField from '@mui/material/TextField';
+
 
 function Intro() {
   const matches = useMediaQuery("(max-width:950px)");
-  const [hover, setHover] = useState(false);
 
   const imgStyle = {
     width: "8rem",
@@ -36,11 +37,8 @@ function Intro() {
   console.log(matches);
 
   return (
-    <Box m={5} sx={{ gap: "5" }}>
+    <Box m={5} sx={{ gap: "0", border:'0px solid white' }}>
       <Card
-        onMouseMove={(e) => {
-          setHover(e.target.value);
-        }}
         className="intro"
         sx={{
           maxWidth: 375,
@@ -52,6 +50,7 @@ function Intro() {
           background: "transparent",
           justifyContent: "center",
           cursor: "pointer",
+          backgroundImage: 'linear-gradient(to right, #080a12, #101122)'
         }}
       >
         <img src={Eyebrow} />
@@ -69,8 +68,8 @@ function Intro() {
           </div>
         </Box>
         <div style={{ color: "white", alignSelf: "center" }}>
-          <ChevronRightIcon className="icon1" />
-          <ArrowForwardIcon className="icon2" />
+          <ChevronRightIcon className="icon1" fontSize="small"/>
+          <ArrowForwardIcon className="icon2" fontSize="small"/>
         </div>
       </Card>
 
@@ -78,33 +77,34 @@ function Intro() {
         variant="h1"
         align="left"
         sx={{
-          fontFamily: "a",
+          fontFamily: "'Heebo', sans-serif",
           color: "white",
-          fontSize: "9vw",
+          fontSize: "8vw",
           marginTop: "1.2rem",
         }}
       >
         Let’s build from here
       </Typography>
-      <Typography variant="h4" align="left" sx={{ color: "#8b949e" }}>
+      <Typography variant="h4" align="left" sx={{ color: "#8b949e", maxWidth:'60rem' }}>
         Harnessed for productivity. Designed for collaboration. Celebrated for
         built-in security. Welcome to the platform developers love.
       </Typography>
 
       <Box>
         {!matches ? (
-          <div style={{ display: "flex", gap: "5rem", marginTop: "3rem" }}>
+          <div style={{ display: "flex", gap: "1rem", marginTop: "3rem" }}>
             <div>
               <input
                 placeholder="Email address"
                 style={{
                   backgroundColor: "white",
-                  height: "2.4rem",
+                  height: "2.38rem",
                   width: "17rem",
-                  padding: ".2rem",
+                  padding: ".3rem",
                   border: "none",
                   borderTopLeftRadius: ".2rem",
                   borderBottomLeftRadius: ".2rem",
+                  fontSize: "1rem"
                 }}
               />
               <Button
@@ -117,23 +117,22 @@ function Intro() {
                   borderTopLeftRadius: "0",
                   borderBottomLeftRadius: "0",
                   backgroundColor: "#783fc6",
-                  height: "2.9rem",
+                  height: "3rem",
                 }}
               >
                 Sign up for GitHub
               </Button>
             </div>
+            <div style={{width:'.1px', height:'3rem', backgroundColor:'grey'}}></div>
             <Button
-              variant="outlined"
+              variant="text"
               size="large"
-              sx={{ width: "25%", textTransform: "none", color: "white" }}
+              sx={{ width: "25%", textTransform: "none", color: "white", border:'1px solid #644e8a' }}
               className="start-trial"
             >
               Start a free enterprise trial
-              <div style={{ color: "white", alignSelf: "center" }}>
-                <ChevronRightIcon className="icon3" />
-                <ArrowForwardIcon className="icon4" />
-              </div>
+              <ChevronRightIcon className="icon3" fontSize="small"/>
+                <ArrowForwardIcon className="icon4" fontSize="small"/>
             </Button>
           </div>
         ) : (
@@ -158,11 +157,17 @@ function Intro() {
               Sign up for GitHub
             </Button>
             <Button
-              variant="outlined"
+              variant="text"
               size="large"
-              sx={{ textTransform: "none" }}
+              sx={{ textTransform: "none", color: "white", border:'1px solid #644e8a'}}
+              className="start-trial"
             >
-              Start a free trial
+              Start a free enterprise trial
+              {/* <div style={{ color: "white", alignSelf: "center" }}>
+                
+              </div> */}
+              <ChevronRightIcon className="icon3" fontSize="small"/>
+              <ArrowForwardIcon className="icon4" fontSize="small"/>
             </Button>
           </div>
         )}
@@ -179,7 +184,7 @@ function Intro() {
           <div style={{ color: "#6c7278" }}>
             Trusted by the world’s leading organizations ↘︎
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "3rem" }}>
             <img src={stripe} style={imgStyle} />
             <img src={pinterest} style={imgStyle} />
             <img src={kpmg} style={imgStyle} />

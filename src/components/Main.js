@@ -11,13 +11,17 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import "aos/dist/aos.css";
 import Aos from "aos";
 import { borderRadius } from "@mui/system";
+import Blur from "react-blur";
+import { Opacity } from "@mui/icons-material";
 
 function Main() {
   const [width, setWidth] = useState(window.innerWidth);
   const [height, setHeight] = useState(window.innerHeight);
   const [divHeight, setDivHeight] = useState(0);
+  const [prodHeight, setProdHeight] = useState(0);
 
   const myRef = useRef(null);
+  const prodRef = useRef(null);
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);
@@ -30,6 +34,7 @@ function Main() {
 
   useEffect(() => {
     setDivHeight(myRef.current.clientHeight);
+    setProdHeight(prodRef.current.clientHeight)
   });
 
   return (
@@ -49,50 +54,56 @@ function Main() {
         <div
           style={{
             display: "flex",
-            marginLeft: "2rem",
-            justifyContent: "space-around",
+            marginLeft: "4rem",
+            // justifyContent: "space-evenly",
           }}
         >
           <div style={{ width: "1rem", marginTop: "4rem" }}>
-            <div style={{ marginLeft: "-.1rem" }}>
-              <img src={line} />
+            <div style={{ marginLeft: "-.1rem"}}>
+              <img src={line} style={{}} />
             </div>
-            <span
-              style={{
-                
-              }}
-            >
+            <div style={{margin: "1rem 0 1rem 0"}}>
               <CodeIcon
                 style={{
                   color: "white",
                   // width: '2rem',
+                  // margin: "1rem 0 1rem 0"
                 }}
               />
-            </span>
+            </div>
             <div
               style={{
                 width: ".2rem",
                 backgroundColor: "white",
-                height: `${divHeight - 185}px`,
+                height: `${divHeight - 218}px`,
                 borderRadius: ".1rem",
                 marginLeft: ".6rem",
-                background: "linear-gradient(to bottom, white, blue, green)",
+                background: "linear-gradient(to bottom, white, #773ec6, #7ee787)",
               }}
             ></div>
-            <span data-aos="fade-bottom" style={{ margin: "1rem 0 1rem 0" }}>
-              <BusinessCenterIcon
-                style={{ color: "white", margin: "1rem 0 1rem 0" }}
-              />
-            </span>
             <div
               data-aos="fade-bottom"
+              data-aos-delay="500"
+              style={{
+                margin: "1rem 0 1rem 0",
+                // backgroundColor:'#253d2d',
+                // WebkitFilter:'blur(1px)',
+                // filter:'blur(1px)',
+              }}
+            >
+              <BusinessCenterIcon style={{ color: "white" }} />
+              
+            </div>
+            <div
+              data-aos="fade-bottom"
+              data-aos-delay="1200"
               style={{
                 width: ".2rem",
                 backgroundColor: "white",
-                height: "25.5rem",
+                height: `${prodHeight}px`,
                 borderRadius: ".1rem",
                 marginLeft: ".6rem",
-                background: "linear-gradient(to bottom, green, black)",
+                background: "linear-gradient(to bottom, #7ee787, #0d1116)",
               }}
             ></div>
           </div>
@@ -101,7 +112,7 @@ function Main() {
             <div ref={myRef}>
               <Intro />
             </div>
-            <Productivity />
+            <div ref={prodRef}><Productivity /></div>
           </div>
         </div>
       </Paper>

@@ -1,7 +1,7 @@
 
-div{
-    /* color: rgb(160, 157, 157); */
-}
+
+@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@500&family=Roboto:wght@300;400;700&display=swap");
+
 
 .intro .icon2{
     display: none;
@@ -28,5 +28,9 @@ div{
 }
 
 .start-trial:hover{
-    border: 1px solid white;
+    border-color: white;
+}
+
+.search-div{
+    background-color: white;
 }

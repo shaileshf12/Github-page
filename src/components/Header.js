@@ -27,15 +27,6 @@ function Header() {
     marginLeft:".2rem"
   };
 
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  // const open = Boolean(anchorEl);
-  // const handleClick = (event) => {
-  //   setAnchorEl(event.currentTarget);
-  // };
-  // const handleClose = () => {
-  //   setAnchorEl(null);
-  // };
-
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -50,6 +41,28 @@ function Header() {
     border: ".5px solid #000",
     boxShadow: 24,
     p: 4,
+  };
+
+  const [searchInput, setSearchInput] = React.useState(false)
+
+  const searchInputHandler = () =>{
+    setSearchInput(true)
+  }
+
+  const ref = React.useRef(null);
+
+  React.useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  });
+
+  const handleClickOutside = (e) => {
+    if (ref.current && !ref.current.contains(e.target)) {
+      setSearchInput(false);
+    }
   };
 
   return (
@@ -233,7 +246,9 @@ function Header() {
               ></Typography>
 
               <Toolbar style={{ gap: "1.5rem" }}>
-                <div
+                {!searchInput ? <div
+                 className="search-div"
+                 onClick={searchInputHandler}
                   style={{
                     width: "15rem",
                     border: "1px solid rgb(160, 157, 157)",
@@ -250,7 +265,7 @@ function Header() {
                     className="search"
                     style={searchStyle}
                     placeholder="Search GitHub"
-                    type="search"
+                    type="text"
                     
                   ></input>
                   <div
@@ -265,7 +280,24 @@ function Header() {
                   >
                     /
                   </div>
-                </div>
+                </div>:
+                <input
+                placeholder="Search GitHub"
+                ref={ref}
+                style={{
+                  width: "14rem",
+                    border: "1px solid rgb(160, 157, 157)",
+                    display: "flex",
+                    backgroundColor: "white",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    borderRadius: ".3rem",
+                    height : '1rem',
+                    fontSize: "small",
+                    padding: ".6rem"
+                }}
+                />
+                }
 
                 <Typography textAlign="center" style={{ color: "white" }}>
                   Sign in
