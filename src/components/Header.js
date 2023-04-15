@@ -299,7 +299,7 @@ function Header() {
                 />
                 }
 
-                <Typography textAlign="center" style={{ color: "white" }}>
+                <Typography textAlign="center" style={{ color: "white", fontSize: '1.2rem' }}>
                   Sign in
                 </Typography>
                 <Button
@@ -307,6 +307,7 @@ function Header() {
                     color: "white",
                     border: "white .5px solid",
                     textTransform: "none",
+                    fontSize: '1rem'
                   }}
                   variant="outlined"
                   size="small"

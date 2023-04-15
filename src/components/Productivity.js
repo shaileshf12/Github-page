@@ -13,8 +13,6 @@ function Productivity() {
     <>
       <Box
         m={5}
-        data-aos="fade-right"
-        // data-aos-delay="800"
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -22,8 +20,10 @@ function Productivity() {
           alignItems: "start",
         }}
       >
-        <h2 style={{ color: "white" }}>Productivity</h2>
+        <h2 data-aos="fade-right" style={{ color: "white" }}>Productivity</h2>
         <div
+        data-aos="fade-right"
+        data-aos-delay="1000"
           style={{
             fontSize: "3rem",
             color: "#7ee787",
